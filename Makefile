@@ -6,7 +6,7 @@
 #    By: thallot <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/03 14:51:59 by thallot           #+#    #+#              #
-#    Updated: 2019/04/26 13:26:46 by thallot          ###   ########.fr        #
+#    Updated: 2019/04/30 15:50:18 by thallot          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,8 +42,9 @@ OBJECTS	= $(SRC:.c=.o)
 
 all: $(NAME)
 $(NAME): $(OBJECTS)
-	@echo "$(_GREEN)[OK] $(_BLUE)Tous les objets sont generes\r"
+	@make -C libft
 	@$(CC) $(OBJECTS) libft/libft.a -o $(NAME)
+	@make clean -C libft
 	@echo "$(_GREEN)[OK] $(_BLUE)Compilation de $(_WHITE)$(NAME)"
 
 %.o: %.c
@@ -55,6 +56,7 @@ clean:
 
 fclean: clean
 	@rm -rf $(NAME) $(EXE)
+	@rm -rf libft/libft.a
 	@echo "$(_GREEN)[OK]$(_RED) Supression de $(_WHITE)$(NAME)"
 	@echo "$(_GREEN)[OK]$(_RED) Supression de tous les fichiers$(_WHITE)"
 

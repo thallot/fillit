@@ -6,7 +6,7 @@
 /*   By: thallot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/25 10:17:46 by thallot           #+#    #+#             */
-/*   Updated: 2019/04/26 13:52:56 by thallot          ###   ########.fr       */
+/*   Updated: 2019/04/30 15:25:47 by thallot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ int		ft_open(char *file)
 	fd = open(file, O_RDONLY);
 	if (fd > 0)
 		return (fd);
-	ft_putendl("error");
 	return (0);
 }
 
@@ -40,6 +39,7 @@ char	**ft_read_tetri(int fd)
 		{
 			ft_memdel((void**)tetris);
 			ft_memdel((void **)&buffer);
+			ft_free_tab(tetris, nb_tetris);
 			return (NULL);
 		}
 		buffer[cursor] = '\0';

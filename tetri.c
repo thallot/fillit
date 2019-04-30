@@ -6,7 +6,7 @@
 /*   By: thallot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/22 15:57:54 by thallot           #+#    #+#             */
-/*   Updated: 2019/04/26 12:59:33 by thallot          ###   ########.fr       */
+/*   Updated: 2019/04/30 15:33:14 by thallot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ t_tetri	*ft_create_tetri(char *str, int index)
 	t_tetri	*tetri;
 	int		*size;
 
-	i = 0;
+	i = -1;
 	compteur = 0;
 	if (!(tetri = (t_tetri *)ft_memalloc(sizeof(t_tetri))))
 		return (NULL);
@@ -81,18 +81,16 @@ t_tetri	*ft_create_tetri(char *str, int index)
 	tetri->width = size[0];
 	tetri->height = size[1];
 	tetri->str = ft_strdup(str);
-	ft_memdel((void **)&size);
 	tetri->index = index;
-	while (compteur < 4)
+	while (compteur < 4 && str[++i] != '\0')
 	{
 		if (str[i] == '#')
 		{
 			tetri->pos[compteur][0] = i % 5;
-			tetri->pos[compteur][1] = i / 5;
-			compteur++;
+			tetri->pos[compteur++][1] = i / 5;
 		}
-		i++;
 	}
+	ft_memdel((void **)&size);
 	return (tetri);
 }
 
@@ -109,6 +107,6 @@ t_tetri	**ft_create_list(char **tetris)
 		tetri[i] = ft_create_tetri(tetris[i], i);
 		i++;
 	}
-	//ft_freetab(tetris);
+	ft_free_tab(tetris, i);
 	return (tetri);
 }

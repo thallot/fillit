@@ -6,7 +6,7 @@
 #    By: thallot <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/03 14:51:59 by thallot           #+#    #+#              #
-#    Updated: 2019/04/24 13:38:42 by thallot          ###   ########.fr        #
+#    Updated: 2019/04/30 15:44:23 by thallot          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -108,7 +108,6 @@ OBJECTS	= $(SRC:.c=.o)
 
 all: $(NAME)
 $(NAME): $(OBJECTS)
-	@echo "$(_GREEN)[OK] $(_BLUE)Tous les objets sont generes\r"
 	@ar rc $(NAME) $(OBJECTS) || printf "\n$(_RED)[ERREUR]$(_GRAY) Une est erreur est survenue $(_WHITE)$(NAME)\n"
 	@ranlib $(NAME)
 	@echo "$(_GREEN)[OK] $(_BLUE)Compilation de $(_WHITE)$(NAME)"
@@ -119,12 +118,9 @@ $(NAME): $(OBJECTS)
 
 clean:
 	@rm -rf $(OBJECTS)
-	@echo "$(_GREEN)[OK]$(_RED) Supression de tous les objets"
 
 fclean: clean
 	@rm -rf $(NAME) $(EXE)
-	@echo "$(_GREEN)[OK]$(_RED) Supression de $(_WHITE)$(NAME)"
-	@echo "$(_GREEN)[OK]$(_RED) Supression de tous les fichiers$(_WHITE)"
 
 re: fclean all
 	@echo "$(_GREEN)[OK]$(_BLUE) Succes $(_WHITE)"

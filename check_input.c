@@ -6,7 +6,7 @@
 /*   By: thallot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/26 09:42:28 by thallot           #+#    #+#             */
-/*   Updated: 2019/04/26 09:48:13 by thallot          ###   ########.fr       */
+/*   Updated: 2019/04/30 15:10:44 by thallot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,17 +19,17 @@ int		ft_check_connection(char *str)
 
 	i = 0;
 	connection = 0;
-	while (i < 20)
+	while (str[i] != '\0')
 	{
 		if (str[i] == '#')
 		{
-			if (str[i + 1] == '#' && (i + 1) < 20)
+			if ((i + 1) < 20 && str[i + 1] == '#')
 				connection++;
-			if (str[i - 1] == '#' && (i - 1) >= 0)
+			if ((i - 1) >= 0 && str[i - 1] == '#')
 				connection++;
-			if (str[i + 5] == '#' && (i + 5) < 20)
+			if ((i + 5) < 20 && str[i + 5] == '#')
 				connection++;
-			if (str[i - 5] == '#' && (i - 5) >= 0)
+			if ((i - 5) >= 0 && str[i - 5] == '#')
 				connection++;
 		}
 		i++;
@@ -63,17 +63,4 @@ int		ft_check_block(char *str)
 	if (nbr_block == 4 && nbr_point == 12)
 		return (1);
 	return (0);
-}
-
-char	*ft_change_char(char *str, char c)
-{
-	int i;
-
-	i = 0;
-	while (str[i] != '\0')
-	{
-		str[i] == '#' ? str[i] = c : str[i];
-		i++;
-	}
-	return (str);
 }
