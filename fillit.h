@@ -6,7 +6,7 @@
 /*   By: thallot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/17 15:37:32 by thallot           #+#    #+#             */
-/*   Updated: 2019/04/30 15:11:20 by thallot          ###   ########.fr       */
+/*   Updated: 2019/05/02 09:43:43 by thallot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,11 @@ typedef struct	s_tetri
 }				t_tetri;
 
 int				ft_open(char *file);
+void			*ft_free_read(char **tetris, char *buffer, int nb_tetris);
 char			**ft_read_tetri(int fd);
 
 int				ft_check_connection(char *str);
-int				ft_check_block(char *str);
+int				ft_check_block(char *str, int last);
 
 int				*ft_get_size(char *str);
 char			*ft_place_min(char *str, int min_x, int min_y);

@@ -6,7 +6,7 @@
 /*   By: thallot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/22 15:57:54 by thallot           #+#    #+#             */
-/*   Updated: 2019/04/30 15:33:14 by thallot          ###   ########.fr       */
+/*   Updated: 2019/05/01 12:37:52 by thallot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,12 @@ char	*ft_place_min(char *str, int min_x, int min_y)
 		i++;
 	}
 	i = 0;
-	while (str[i] != '\0')
+	while (str[i])
 	{
 		if (str[i] == '#')
 		{
-			str[i - min_x - (min_y * 5)] = '#';
 			str[i] = '.';
+			str[i - min_x - (min_y * 5)] = '#';
 		}
 		i++;
 	}
