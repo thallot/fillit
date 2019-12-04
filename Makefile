@@ -6,7 +6,7 @@
 #    By: thallot <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/03 14:51:59 by thallot           #+#    #+#              #
-#    Updated: 2019/04/30 15:50:18 by thallot          ###   ########.fr        #
+#    Updated: 2019/05/06 11:41:56 by thallot          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,9 +38,8 @@ SRC= main.c \
 
 OBJECTS	= $(SRC:.c=.o)
 
-.PHONY: clean fclean re all
-
 all: $(NAME)
+
 $(NAME): $(OBJECTS)
 	@make -C libft
 	@$(CC) $(OBJECTS) libft/libft.a -o $(NAME)
@@ -62,3 +61,5 @@ fclean: clean
 
 re: fclean all
 	@echo "$(_GREEN)[OK]$(_BLUE) Succes $(_WHITE)"
+
+.PHONY: clean fclean re all

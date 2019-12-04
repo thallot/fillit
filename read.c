@@ -6,7 +6,7 @@
 /*   By: thallot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/25 10:17:46 by thallot           #+#    #+#             */
-/*   Updated: 2019/05/02 11:06:19 by thallot          ###   ########.fr       */
+/*   Updated: 2019/06/03 10:36:46 by thallot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ char	**ft_read_tetri(int fd)
 	char	*buffer;
 	int		cursor;
 	int		nb_tetris;
+	int		tmp;
 
 	nb_tetris = 0;
 	if (!(tetris = (char **)ft_memalloc(sizeof(char *) * 27)))
@@ -43,13 +44,16 @@ char	**ft_read_tetri(int fd)
 	buffer = ft_strnew(21);
 	while ((cursor = read(fd, buffer, 21)))
 	{
-		if (!ft_check_connection(buffer) || !ft_check_block(buffer, 0))
+		if (!ft_check_connection(buffer) || !ft_check_block(buffer,
+			cursor == 21 ? 0 : 1) || nb_tetris > 25)
 			return (ft_free_read(tetris, buffer, nb_tetris));
 		buffer[cursor] = '\0';
 		tetris[nb_tetris++] = ft_strndup(buffer, 21);
+		ft_bzero(buffer, 21);
+		tmp = cursor;
 	}
-	if (!ft_check_block(tetris[nb_tetris - 1], 1))
-		return (ft_free_read(tetris, buffer, nb_tetris - 1));
+	if (tmp != 20)
+		return (ft_free_read(tetris, buffer, nb_tetris));
 	ft_memdel((void **)&buffer);
 	close(fd);
 	return (tetris);

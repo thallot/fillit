@@ -6,7 +6,7 @@
 /*   By: thallot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/26 13:19:54 by thallot           #+#    #+#             */
-/*   Updated: 2019/05/01 10:33:29 by thallot          ###   ########.fr       */
+/*   Updated: 2019/06/03 10:42:12 by thallot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,7 @@ t_map	*ft_solve(t_tetri **tetri)
 	size_t	size;
 	t_map	*map;
 
-	size = 1;
+	size = 2;
 	map = NULL;
 	map = ft_create_map(size);
 	while (ft_solve_tetri(map, tetri, 0) != 1)

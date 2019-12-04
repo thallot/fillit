@@ -6,7 +6,7 @@
 /*   By: thallot <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/26 13:14:31 by thallot           #+#    #+#             */
-/*   Updated: 2019/04/30 15:42:36 by thallot          ###   ########.fr       */
+/*   Updated: 2019/05/27 13:37:37 by thallot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ void	ft_free_tetri(t_tetri *tetri)
 	int i;
 
 	i = 0;
-	ft_memdel((void **)&(tetri->pos));
 	ft_memdel((void **)&(tetri->str));
 	ft_memdel((void **)&tetri);
 }
